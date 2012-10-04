@@ -789,7 +789,6 @@ Request.prototype.multipart = function (multipart) {
   return self
 }
 Request.prototype.json = function (val) {
-  this.setHeader('content-type', 'application/json')
   this.setHeader('accept', 'application/json')
   this._json = true
   if (typeof val === 'boolean') {
@@ -797,6 +796,7 @@ Request.prototype.json = function (val) {
   } else {
     this.body = JSON.stringify(val)
   }
+  if (this.body) this.setHeader('content-type', 'application/json')
   return this
 }
 Request.prototype.aws = function (opts, now) {

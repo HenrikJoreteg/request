@@ -23,7 +23,7 @@ s.listen(s.port, function () {
 
   s.on('/post', function (req, resp) {
     assert.equal(req.headers.foo, 'bar');
-    assert.equal(req.headers['content-type'], 'application/json');
+    assert.equal(req.headers['accept'], 'application/json');
     assert.equal(req.method, 'POST')
     resp.writeHead(200, {'Content-Type': 'application/json'});
     resp.end(JSON.stringify({foo:'bar'}));
